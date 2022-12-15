@@ -21,5 +21,19 @@ namespace WebApi.Controllers.Data
         public double DonGia { get; set; }
 
         public byte GiamGia { get; set; }
+
+        public int? MaLoai {get; set; }
+
+        [ForeignKey("MaLoai")]
+        public Loai Loai { get; set; }
+
+
+        public ICollection<DonHangChiTiet> DonHangChiTiets { get; set; }
+
+        public HangHoa()
+        {
+            DonHangChiTiets = new HashSet<DonHangChiTiet>();
+        }
+
     }
 }
