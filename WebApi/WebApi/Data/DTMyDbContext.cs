@@ -2,27 +2,27 @@
 
 namespace WebApi.Controllers.Data
 {
-    public class MyDbContext : DbContext
+    public class DTMyDbContext : DbContext
 
     {
-        public MyDbContext(DbContextOptions options): base(options) { }
+        public DTMyDbContext(DbContextOptions options): base(options) { }
 
 
         #region DBSet
-        public DbSet<HangHoa> HangHoas { get; set; }
+        public DbSet<DTHangHoa> HangHoas { get; set; }
        
-        public DbSet<Loai> Loais { get; set; }
+        public DbSet<DTLoai> Loais { get; set; }
 
-        public DbSet<DonHang> DonHangs{ get; set; }
+        public DbSet<DTDonHang> DonHangs{ get; set; }
 
 
-        public DbSet<DonHangChiTiet> DonHangChiTiets{ get; set; }
+        public DbSet<DTDonHangChiTiet> DonHangChiTiets{ get; set; }
         #endregion
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<DonHang>(e =>
+            modelBuilder.Entity<DTDonHang>(e =>
             {
                 e.ToTable("DonHang");
                 e.HasKey(dh => dh.MaDh);
@@ -30,7 +30,7 @@ namespace WebApi.Controllers.Data
                 e.Property(dh => dh.NgayDat).IsRequired().HasMaxLength(100);
             });
 
-            modelBuilder.Entity<DonHangChiTiet>(entity =>
+            modelBuilder.Entity<DTDonHangChiTiet>(entity =>
             {
                 entity.ToTable("ChiTietDonHang");
                 entity.HasKey(e => new { e.MaDh, e.MaHh });

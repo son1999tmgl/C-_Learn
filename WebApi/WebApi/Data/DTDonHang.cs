@@ -1,6 +1,9 @@
-﻿namespace WebApi.Controllers.Data
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WebApi.Controllers.Data
 {
-    public class DonHang
+    [Table("DonHang")]
+    public class DTDonHang
     {
         public enum TinhTrangDatHang
         {
@@ -25,12 +28,12 @@
         public string SoDienThoai { get; set; }
 
 
-        public ICollection<DonHangChiTiet> DonHangChiTiets { get; set; }
+        public ICollection<DTDonHangChiTiet> DonHangChiTiets { get; set; }
 
 
-        public DonHang()
+        public DTDonHang()
         {
-            DonHangChiTiets = new List<DonHangChiTiet>();
+            DonHangChiTiets = new List<DTDonHangChiTiet>();
         }
 
     }

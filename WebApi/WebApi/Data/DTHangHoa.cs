@@ -5,7 +5,7 @@ namespace WebApi.Controllers.Data
 {
 
     [Table("HangHoa")]
-    public class HangHoa
+    public class DTHangHoa
     {
         [Key]
         public Guid MaHh   { get; set; }
@@ -14,25 +14,23 @@ namespace WebApi.Controllers.Data
         [MaxLength(100)]
         public string TenHh  { get; set; }
 
-        public string MaTa { get; set; }
-
         [Required]
         [Range(0, double.MaxValue)]
         public double DonGia { get; set; }
 
-        public byte GiamGia { get; set; }
+        public byte? GiamGia { get; set; }
 
         public int? MaLoai {get; set; }
 
         [ForeignKey("MaLoai")]
-        public Loai Loai { get; set; }
+        public DTLoai Loai { get; set; }
 
 
-        public ICollection<DonHangChiTiet> DonHangChiTiets { get; set; }
+        public ICollection<DTDonHangChiTiet> DonHangChiTiets { get; set; }
 
-        public HangHoa()
+        public DTHangHoa()
         {
-            DonHangChiTiets = new HashSet<DonHangChiTiet>();
+            DonHangChiTiets = new HashSet<DTDonHangChiTiet>();
         }
 
     }

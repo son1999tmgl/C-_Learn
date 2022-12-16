@@ -1,6 +1,6 @@
 ﻿namespace WebApi.Controllers.Data
 {
-    public class DonHangChiTiet
+    public class DTDonHangChiTiet
     {
         public Guid MaHh { get; set; }
 
@@ -13,9 +13,9 @@
         public byte GiamGia { get; set; }
 
 
-        public DonHang DonHang { get; set; }
+        public DTDonHang DonHang { get; set; }
 
-        public HangHoa HangHoa { get; set; }
+        public DTHangHoa HangHoa { get; set; }
 
 
     }

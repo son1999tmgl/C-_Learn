@@ -1,0 +1,29 @@
+Add-Migration <name_migration>
+fluent api trong entity framework core
+
+các kiểu trả về: 
+	- IActionResult(thưởng)
+	- ...
+
+MyDBCOntext
+DI:
+	- AddSingleton
+	- AddScoped
+	- AddTransient
+	
+LINQ to Entities:
+	2 cách: 
+		- lambda syntax
+		- query syntax
+	-filters: 
+		+ FirstOrDefault
+		+ LastOrDefault
+		+ SingleOrDefault
+	- sorting: 
+		+ query.OrderBy(): tăng dần
+		+ query.OrderByDescending(): giảm dần
+		+ query.ThenBy():sx theo những đk sau
+		+ query.ThenByDescending()
+	- paging: 
+		+ query.Skip(n)
+		+ query.Take(n)

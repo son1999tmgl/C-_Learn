@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApi.Controllers.Data
 {
     [Table("Loai")]
-    public class Loai
+    public class DTLoai
     {
         [Key]
         public int MaLoai { get; set; }
@@ -14,7 +14,7 @@ namespace WebApi.Controllers.Data
         public string TenLoai { get; set; }
 
 
-        public virtual ICollection<HangHoa> HangHoas { get; set; }  
+        public virtual ICollection<DTHangHoa> HangHoas { get; set; }  
  
     }
 }

@@ -11,7 +11,7 @@ using WebApi.Controllers.Data;
 
 namespace WebApi.Migrations
 {
-    [DbContext(typeof(MyDbContext))]
+    [DbContext(typeof(DTMyDbContext))]
     [Migration("20221215074757_AddDonHangSchema")]
     partial class AddDonHangSchema
     {
