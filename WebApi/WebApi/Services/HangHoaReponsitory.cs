@@ -1,5 +1,6 @@
 ﻿using WebApi.Controllers.Data;
 using WebApi.Controllers.Models;
+using WebApi.Models;
 
 namespace WebApi.Services
 {
@@ -7,11 +8,35 @@ namespace WebApi.Services
     {
         private readonly DTMyDbContext _context;
 
+        public static int PER_PAGE { get; set; } = 2;
+
         public HangHoaReponsitory(DTMyDbContext context)
         {
             _context = context;
         }
-        public List<ResultHangHoa> GetAll(string search, double? from, double? to, string? sortBy)
+
+        public ResultHangHoa Create(InputHangHoa hh)
+        {
+            try
+            {
+                var hangHoa = new DTHangHoa
+                {
+                    TenHh = hh.TenHangHoa,
+                    DonGia = hh.DonGia,
+                    MoTa = hh.Mota,
+                    MaLoai = hh.MaLoai
+                };
+                _context.Add(hangHoa);
+                _context.SaveChanges();
+                return convertDTToResult(hangHoa);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<ResultHangHoa> GetAll(string search, int page, double? from, double? to, string? sortBy)
         {
             var allProducts = _context.HangHoas.AsQueryable();
 
@@ -49,19 +74,52 @@ namespace WebApi.Services
             { 
                 allProducts = allProducts.OrderBy(hh => hh.TenHh);
             }
-            #region sort
 
+            #region paging
+            //allProducts = allProducts.Skip((page-1)*PER_PAGE).Take(PER_PAGE);
 
+            var result = PaginatedList<DTHangHoa>.Create(allProducts, page, PER_PAGE);
             #endregion
 
-            var result = allProducts.Select(hh => new ResultHangHoa
+
+            return result.Select(hh => new ResultHangHoa
             {
                 MaHangHoa = hh.MaHh,
                 TenHangHoa = hh.TenHh,
                 DonGia = hh.DonGia,
-                TenLoai = hh.Loai.TenLoai
-            });
-            return result.ToList();
+                TenLoai = hh.Loai?.TenLoai
+            }).ToList();
         }
+
+
+        private ResultHangHoa convertDTToResult(DTHangHoa dtHangHoa)
+        {
+            try
+            { 
+                var loai = _context.Loais.FirstOrDefault(lo => lo.MaLoai == dtHangHoa.MaLoai);
+                if(loai != null)
+                { 
+                    return new ResultHangHoa
+                    {
+                        MaHangHoa = dtHangHoa.MaHh,
+                        TenHangHoa = dtHangHoa.TenHh,
+                        DonGia = dtHangHoa.DonGia,
+                        Mota = dtHangHoa.MoTa,
+                        MaLoai = dtHangHoa.MaLoai
+                    };
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+
+       
     }
 }

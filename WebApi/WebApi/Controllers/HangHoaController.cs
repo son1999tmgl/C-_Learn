@@ -21,51 +21,30 @@ namespace WebApi.Controllers
             _hangHoaReponsitory = hangHoaReponsitory;
         }
         [HttpGet]
-        public IActionResult GetAll(string? search, double? from, double? to, string? sortBy)
+        public IActionResult GetAll(string? search, double? from, double? to, string? sortBy, int page=1, int perPage = 2)
         {
-            return Ok(_hangHoaReponsitory.GetAll(search, from, to, sortBy));
+            return Ok(_hangHoaReponsitory.GetAll(search, page, from, to, sortBy));
         }
 
         [HttpPost]
-        public IActionResult Create(InputHangHoa hangHoaVM)
+        public IActionResult Create(InputHangHoa hangHoa)
         {
-            try
-            {
-                if (hangHoaVM.MaLoai != null)
+            /*try
+            {*/
+               var hh = _hangHoaReponsitory.Create(hangHoa);
+                if(hh != null)
                 {
-                    var loai = _context.Loais.FirstOrDefault(l => l.MaLoai == hangHoaVM.MaLoai);
-                    if (loai != null)
-                    {
-                        var hanghoa = new DTHangHoa
-                        {
-                            TenHh = hangHoaVM.TenHangHoa,
-                            MaLoai = hangHoaVM.MaLoai,
-                            DonGia = hangHoaVM.DonGia
-                        };
-                        _context.Add(hanghoa);
-                        _context.SaveChanges();
-                        return Ok(new ResultHangHoa
-                        {
-                            TenHangHoa = hanghoa.TenHh,
-                            MaLoai = hanghoa.MaLoai,
-                            DonGia = hanghoa.DonGia,
-                            MaHangHoa = hanghoa.MaHh
-                        });
-                    }
-                    else
-                    {
-                        return BadRequest("Mã loại không tồn tại.");
-                    }
+                    return Ok(hh);
                 }
                 else
                 {
-                    return NotFound();
+                    return BadRequest();
                 }
-            }
+           /* }
             catch
             {
                 return BadRequest("Có lỗi xảy ra");
-            }
+            }*/
         }
 
         [HttpGet("{id}")]

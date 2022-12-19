@@ -96,6 +96,10 @@ namespace WebApi.Migrations
                     b.Property<int?>("MaLoai")
                         .HasColumnType("int");
 
+                    b.Property<string>("MoTa")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("TenHh")
                         .IsRequired()
                         .HasMaxLength(100)

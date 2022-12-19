@@ -1,0 +1,5 @@
+0x, 0b: hexa vs binary
+Integer literal: cuối số để báo kiểu dữ liệu
+Chế độ diễn giải escape sequence: thêm @ vào trc để tắt. vd: 
+    "C:\\system" == @"C:\system"
+

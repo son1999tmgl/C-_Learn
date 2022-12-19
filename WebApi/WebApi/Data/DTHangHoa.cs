@@ -19,6 +19,9 @@ namespace WebApi.Controllers.Data
         public double DonGia { get; set; }
 
         public byte? GiamGia { get; set; }
+        
+        //Mô tả
+        public string MoTa { get; set; }
 
         public int? MaLoai {get; set; }
 

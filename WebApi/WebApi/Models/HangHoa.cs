@@ -6,8 +6,7 @@ namespace WebApi.Controllers.Models
     //Model đầu vào
     public class InputHangHoa : HangHoaVM
     {
-        
-
+       
     }
 
 

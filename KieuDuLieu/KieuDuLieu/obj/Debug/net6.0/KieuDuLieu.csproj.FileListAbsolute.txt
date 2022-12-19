@@ -1,0 +1,15 @@
+E:\C#\C-_Learn\KieuDuLieu\KieuDuLieu\bin\Debug\net6.0\KieuDuLieu.exe
+E:\C#\C-_Learn\KieuDuLieu\KieuDuLieu\bin\Debug\net6.0\KieuDuLieu.deps.json
+E:\C#\C-_Learn\KieuDuLieu\KieuDuLieu\bin\Debug\net6.0\KieuDuLieu.runtimeconfig.json
+E:\C#\C-_Learn\KieuDuLieu\KieuDuLieu\bin\Debug\net6.0\KieuDuLieu.dll
+E:\C#\C-_Learn\KieuDuLieu\KieuDuLieu\bin\Debug\net6.0\KieuDuLieu.pdb
+E:\C#\C-_Learn\KieuDuLieu\KieuDuLieu\obj\Debug\net6.0\KieuDuLieu.csproj.AssemblyReference.cache
+E:\C#\C-_Learn\KieuDuLieu\KieuDuLieu\obj\Debug\net6.0\KieuDuLieu.GeneratedMSBuildEditorConfig.editorconfig
+E:\C#\C-_Learn\KieuDuLieu\KieuDuLieu\obj\Debug\net6.0\KieuDuLieu.AssemblyInfoInputs.cache
+E:\C#\C-_Learn\KieuDuLieu\KieuDuLieu\obj\Debug\net6.0\KieuDuLieu.AssemblyInfo.cs
+E:\C#\C-_Learn\KieuDuLieu\KieuDuLieu\obj\Debug\net6.0\KieuDuLieu.csproj.CoreCompileInputs.cache
+E:\C#\C-_Learn\KieuDuLieu\KieuDuLieu\obj\Debug\net6.0\KieuDuLieu.dll
+E:\C#\C-_Learn\KieuDuLieu\KieuDuLieu\obj\Debug\net6.0\refint\KieuDuLieu.dll
+E:\C#\C-_Learn\KieuDuLieu\KieuDuLieu\obj\Debug\net6.0\KieuDuLieu.pdb
+E:\C#\C-_Learn\KieuDuLieu\KieuDuLieu\obj\Debug\net6.0\KieuDuLieu.genruntimeconfig.cache
+E:\C#\C-_Learn\KieuDuLieu\KieuDuLieu\obj\Debug\net6.0\ref\KieuDuLieu.dll
