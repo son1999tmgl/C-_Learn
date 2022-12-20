@@ -1,9 +1,38 @@
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using WebApi.Controllers.Data;
 using WebApi.Controllers.Services;
+using WebApi.Models;
 using WebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.Configure<AppSetting>(builder.Configuration.GetSection("AppSetting"));
+
+//Tạo secretKey
+var secretKey = builder.Configuration["AppSetting:secretKey"];
+var secretKeyBytes = Encoding.UTF8.GetBytes(secretKey);
+
+//
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(opt =>
+    {
+        opt.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+        {
+            //Tự cấp token
+            ValidateIssuer = false,
+            ValidateAudience = false,
+
+            //ký vào token
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(secretKeyBytes),
+
+            ClockSkew = TimeSpan.Zero
+        };
+    });
 
 // Add services to the container.
 
@@ -32,6 +61,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

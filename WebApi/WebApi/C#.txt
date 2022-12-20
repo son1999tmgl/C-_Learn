@@ -27,3 +27,14 @@ LINQ to Entities:
 	- paging: 
 		+ query.Skip(n)
 		+ query.Take(n)
+
+JWT: 
+	- SecretKey: has khoá
+	- package JwtBearer
+	- Cầu hình: 
+		+ service.AddAuthentication
+		+ JwtBewarerDefault
+		+ AddJwtBearer 
+
+SSO: đăng nhập 1 lần sử dụng nhiều nơi 
+UseAuthentication != UseAuthorization	

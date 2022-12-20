@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WebApi.Data;
 
 namespace WebApi.Controllers.Data
 {
@@ -9,6 +10,9 @@ namespace WebApi.Controllers.Data
 
 
         #region DBSet
+
+        public DbSet<DTRefreshToken> RefreshTokens { get; set; }
+        public DbSet<DTNguoiDung> NguoiDungs { get; set; } 
         public DbSet<DTHangHoa> HangHoas { get; set; }
        
         public DbSet<DTLoai> Loais { get; set; }
@@ -45,6 +49,14 @@ namespace WebApi.Controllers.Data
                     .HasForeignKey(e => e.MaHh)
                     .HasConstraintName("FK_DonHangCT_HangHoa");
 
+            });
+
+            modelBuilder.Entity<DTNguoiDung>(entity =>
+            {
+                entity.HasIndex(e => e.UserName).IsUnique();
+                entity.Property(e => e.HoTen).IsRequired().HasMaxLength(150);
+                entity.Property(e => e.Email).IsRequired().HasMaxLength(150);
+                
             });
         }
 

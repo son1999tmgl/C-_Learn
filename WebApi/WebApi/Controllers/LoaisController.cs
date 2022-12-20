@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Controllers.Models;
 using WebApi.Controllers.Services;
@@ -39,6 +40,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult Update(int id, InputLoai loai)
         {
             if(id != loai.MaLoai)
@@ -71,6 +73,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Add(InputLoai loai)
         {
             try

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApi.Controllers.Data;
 
@@ -11,9 +12,11 @@ using WebApi.Controllers.Data;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(DTMyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221220031659_AddTableNguoiDung")]
+    partial class AddTableNguoiDung
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -166,42 +169,6 @@ namespace WebApi.Migrations
                     b.ToTable("NguoiDung");
                 });
 
-            modelBuilder.Entity("WebApi.Data.DTRefreshToken", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("ExpireAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsRevoked")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsUsed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("JwtId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("NguoiDungId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Token")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NguoiDungId");
-
-                    b.ToTable("RefreshToken");
-                });
-
             modelBuilder.Entity("WebApi.Controllers.Data.DTDonHangChiTiet", b =>
                 {
                     b.HasOne("WebApi.Controllers.Data.DTDonHang", "DonHang")
@@ -230,17 +197,6 @@ namespace WebApi.Migrations
                         .HasForeignKey("MaLoai");
 
                     b.Navigation("Loai");
-                });
-
-            modelBuilder.Entity("WebApi.Data.DTRefreshToken", b =>
-                {
-                    b.HasOne("WebApi.Data.DTNguoiDung", "NguoiDung")
-                        .WithMany()
-                        .HasForeignKey("NguoiDungId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("NguoiDung");
                 });
 
             modelBuilder.Entity("WebApi.Controllers.Data.DTDonHang", b =>
